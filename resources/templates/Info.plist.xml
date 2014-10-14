@@ -1,0 +1,78 @@
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleDisplayName</key>
+    <string>${app.name}</string>
+    <key>CFBundleExecutable</key>
+    <string>${app.executable}</string>
+    <key>CFBundleIdentifier</key>
+    <string>${app.id}</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>${app.name}</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>${app.version}</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleVersion</key>
+    <string>${app.build}</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
+    <key>UIStatusBarHidden</key>
+    <false/>
+
+    <!-- Support iPhone and iPad -->
+    <key>UIDeviceFamily</key>
+    <array>
+        <integer>1</integer>
+        <integer>2</integer>
+    </array>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>armv7</string>
+    </array>
+
+    <!-- Change this is you're target is < 7.0 -->
+	<key>MinimumOSVersion</key>
+	<string>7.0</string>
+
+    <!-- Support all configurations on iPhone -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+
+    <!-- Support all configurations on iPad -->
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+
+    <!-- Uncomment for distribution -->
+    <!--<key>CFBundleIcons</key>-->
+    <!--<dict>-->
+        <!--<key>CFBundlePrimaryIcon</key>-->
+        <!--<dict>-->
+            <!--<key>CFBundleIconFiles</key>-->
+            <!--<array>-->
+                <!--<string>Icon</string>-->
+                <!--<string>Icon-72</string>-->
+                <!--<string>Icon-76</string>-->
+                <!--<string>Icon-60</string>-->
+            <!--</array>-->
+        <!--</dict>-->
+    <!--</dict>-->
+</dict>
+</plist>

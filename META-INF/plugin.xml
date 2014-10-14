@@ -1,0 +1,68 @@
+<idea-plugin version="2">
+  <id>com.yourcompany.unique.plugin.id</id>
+  <name>Plugin display name here</name>
+  <version>1.0</version>
+  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <depends>org.jetbrains.plugins.gradle</depends>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="131"/>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+
+      <!-- Run configuration -->
+      <configurationType implementation="org.robovm.intellij.runconf.RoboVMConfigurationType" />
+
+      <!-- Run configuration runner -->
+      <programRunner implementation="org.robovm.intellij.runconf.RoboVMRunner"/>
+
+      <!-- RoboVM Module -->
+      <moduleType id="robovm.module" implementationClass="org.robovm.intellij.modules.RoboVMModuleType" />
+
+      <moduleConfigurationEditorProvider implementation="org.robovm.intellij.ui.RoboVMModuleEditorsProvider"/>
+      <!-- Existing project template -->
+      <projectTemplate projectType="robovm.module" templatePath="resources/Hello, World iOS Sample Application.zip"/>
+
+
+  </extensions>
+
+
+  <application-components>
+
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+      <group id="RoboVM" text="RoboVM" popup="true">
+          <action id="RoboVMIJ.ClearCache" class="org.robovm.intellij.actions.ClearCache" text="_Clear Cache" description="Clear RoboVM Cache" />
+          <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="Mvn.Actions"/>
+      </group>
+  </actions>
+
+
+    <!--<depends>org.jetbrains.plugins.gradle</depends>-->
+
+</idea-plugin>

@@ -1,0 +1,14 @@
+<config>
+    <executableName>${app.executable}</executableName>
+    <mainClass>${app.mainclass}</mainClass>
+    <os>ios</os>
+    <!-- thumbv7 = device, x86 = simulator -->
+    <arch>thumbv7</arch>
+    <resources>
+        <resource>
+            <directory>resources</directory>
+        </resource>
+    </resources>
+    <target>ios</target>
+    <iosInfoPList>Info.plist.xml</iosInfoPList>
+</config>

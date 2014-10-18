@@ -4,14 +4,12 @@
   <version>1.1</version>
   <vendor url="https://groups.google.com/forum/#!forum/robovm">RoboVM</vendor>
 
-    <depends>org.jetbrains.plugins.gradle</depends>
-
   <description><![CDATA[
      RoboVM support for IntelliJ<br>
     ]]></description>
 
   <change-notes><![CDATA[
-      Initial build
+
     ]]>
   </change-notes>
 
@@ -32,13 +30,8 @@
       <!-- Run configuration runner -->
       <programRunner implementation="org.robovm.intellij.runconf.RoboVMRunner"/>
 
-      <!-- RoboVM Module -->
-      <moduleType id="robovm.module" implementationClass="org.robovm.intellij.modules.RoboVMModuleType" />
-
-      <moduleConfigurationEditorProvider implementation="org.robovm.intellij.ui.RoboVMModuleEditorsProvider"/>
       <!-- Existing project template -->
-      <projectTemplate projectType="robovm.module" templatePath="resources/Hello, World iOS Sample Application.zip"/>
-
+      <projectTemplate projectType="iOS Application" templatePath="resources/iOS Application (RoboVM).zip" category="true"/>
 
   </extensions>
 
@@ -53,12 +46,6 @@
     <!-- Add your project components here -->
   </project-components>
 
-  <actions>
-      <group id="RoboVM" text="RoboVM" popup="true">
-          <action id="RoboVMIJ.ClearCache" class="org.robovm.intellij.actions.ClearCache" text="_Clear Cache" description="Clear RoboVM Cache" />
-          <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="Mvn.Actions"/>
-      </group>
-  </actions>
 
 
     <!--<depends>org.jetbrains.plugins.gradle</depends>-->

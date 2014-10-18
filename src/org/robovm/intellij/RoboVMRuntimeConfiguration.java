@@ -86,16 +86,18 @@ public class RoboVMRuntimeConfiguration extends ModuleBasedConfiguration<RoboVMS
                 moduleComboBox.setModel(new DefaultComboBoxModel(new String[]{project.getName()}));
             }
 
-            sdkBox.setModel(new DefaultComboBoxModel(getValidSDKs(devices)));
-            sdkBox.addActionListener(new ActionListener() {
+            targetComboBox.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String selectedItem = (String) sdkBox.getSelectedItem();
-                    if (!selectedItem.equals(NO_SDK_FOUND)) {
-                        filterDeviceComboBox(targetComboBox, selectedItem, devices);
+                    String selectedItem = (String) targetComboBox.getSelectedItem();
+                    if (selectedItem.contains("iPad") || selectedItem.contains("iPhone")) {
+                      filterSdkComboBox(sdkBox, selectedItem, devices);
+                    } else {
+                        sdkBox.setModel(new DefaultComboBoxModel(new String[] {"-"}));
                     }
                 }
             });
+
 
             if (roboVMRuntimeConfiguration.getSdk() != null) {
                 sdkBox.getModel().setSelectedItem(roboVMRuntimeConfiguration.getSdk());
@@ -104,9 +106,13 @@ public class RoboVMRuntimeConfiguration extends ModuleBasedConfiguration<RoboVMS
                 targetComboBox.getModel().setSelectedItem(roboVMRuntimeConfiguration.getTarget());
             }
 
-            moduleName = (String) moduleComboBox.getSelectedItem();
-            target = (String) targetComboBox.getSelectedItem();
-            sdk = (String) sdkBox.getSelectedItem();
+//
+//            moduleName = (String) moduleComboBox.getSelectedItem();
+//            target = (String) targetComboBox.getSelectedItem();
+//            sdk = (String) sdkBox.getSelectedItem();
+            if (sdk != null) {
+                sdkBox.setSelectedItem(sdk);
+            }
         }
 
 
@@ -142,31 +148,16 @@ public class RoboVMRuntimeConfiguration extends ModuleBasedConfiguration<RoboVMS
         return roboVMRuntimeConfigurationSettingsEditor;
     }
 
-    private void filterDeviceComboBox(JComboBox targetComboBox, String sdk, Device[] devices) {
-        ArrayList<String> validDevices = new ArrayList<String>();
+    private void filterSdkComboBox(JComboBox combobox, String selectedItem, Device[] devices) {
+        ArrayList<String> validSdks = new ArrayList<String>();
         for (Device device : devices) {
-            if (device.getSdk().equals(sdk)) {
-                validDevices.add(device.getDevice());
+            if (device.getDevice().equals(selectedItem)) {
+                validSdks.add(device.getSdk());
             }
         }
-        targetComboBox.setModel(new DefaultComboBoxModel(validDevices.toArray(new String[validDevices.size()])));
+        combobox.setModel(new DefaultComboBoxModel(validSdks.toArray(new String[validSdks.size()])));
     }
 
-    private String[] getValidSDKs(Device[] devices) {
-        ArrayList<String> sdks = new ArrayList<String>();
-        if (devices == null || devices.length == 0) {
-            return new String[] {
-                    NO_SDK_FOUND
-            };
-        } else {
-            for (Device device : devices) {
-                if (!sdks.contains(device.getSdk())) {
-                    sdks.add(device.getSdk());
-                }
-            }
-            return sdks.toArray(new String[sdks.size()]);
-        }
-    }
 
     private String[] getValidTargets(Device[] devices) {
         if (devices == null || devices.length == 0) {

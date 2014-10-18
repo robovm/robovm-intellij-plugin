@@ -7,8 +7,7 @@ Features:
  * Run configurations for sdks and devices available on your system (using Gradle)
  * Run configuration for launching on device (using Gradle)
  * Run configuration for creating an IPA (using Gradle)
- * Basic project setup (you must force the link of gradle in order to download gradlew)
- * "Hello, World" example project
+ * "Hello, World" example template
  
 ##Bugs
 Please report any bugs through the github issue tracker

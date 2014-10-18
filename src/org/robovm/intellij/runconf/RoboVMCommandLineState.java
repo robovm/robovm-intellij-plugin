@@ -20,6 +20,7 @@ import com.intellij.execution.configurations.CommandLineState;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.runners.ExecutionEnvironment;
+import org.jdesktop.swingx.util.OS;
 import org.jetbrains.annotations.NotNull;
 import org.robovm.intellij.RoboVMProcessHandler;
 import org.robovm.intellij.RoboVMRuntimeConfiguration;
@@ -47,9 +48,16 @@ public class RoboVMCommandLineState extends CommandLineState {
 
         String projectPath = configuration.getProject().getBasePath();
         String[] gradleTask = configuration.getGradleTask();
+        String gradleBin = "gradlew";
+
+        if (OS.isWindows()) {
+            gradleBin = "gradlew.bat";
+        }
+        new File(projectPath + File.separatorChar + gradleBin).setExecutable(true,false);
+
         GeneralCommandLine commandLine = new GeneralCommandLine();
         commandLine.setWorkDirectory(new File(projectPath));
-        commandLine.setExePath(projectPath + File.separatorChar + "gradlew");
+        commandLine.setExePath(projectPath + File.separatorChar + gradleBin);
         commandLine.addParameters(gradleTask);
 
         return RoboVMProcessHandler.runCommand(commandLine) ;

@@ -322,10 +322,8 @@ public class RoboVMRuntimeConfiguration extends ModuleBasedConfiguration<RoboVMS
         return new String[] {
                 task,
                 sdkProperty,
-                targetProperty
+                targetProperty,
+                "--info", "--stacktrace"
         };
-
     }
-
-
 }

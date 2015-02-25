@@ -55,8 +55,7 @@ public class RoboVMCommandLineState extends CommandLineState {
         }
         new File(projectPath + File.separatorChar + gradleBin).setExecutable(true,false);
 
-        GeneralCommandLine commandLine = new GeneralCommandLine();
-        commandLine.setWorkDirectory(new File(projectPath));
+        GeneralCommandLine commandLine = new GeneralCommandLine().withWorkDirectory(new File(projectPath));
         commandLine.setExePath(projectPath + File.separatorChar + gradleBin);
         commandLine.addParameters(gradleTask);
 
